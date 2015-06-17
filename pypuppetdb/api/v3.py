@@ -86,9 +86,9 @@ class API(BaseAPI):
                 node['events'] = None
 
             # node report age
-            if with_status and node['report_timestamp'] is not None:
+            if with_status and node['catalog_timestamp'] is not None:
                 try:
-                    last_report = json_to_datetime(node['report_timestamp'])
+                    last_report = json_to_datetime(node['catalog_timestamp'])
                     last_report = last_report.replace(tzinfo=None)
                     now = datetime.utcnow()
                     unreported_border = now-timedelta(hours=unreported)
