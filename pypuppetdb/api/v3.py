@@ -62,7 +62,7 @@ class API(BaseAPI):
         if with_status:
             latest_events = self._query(
                 'event-counts',
-                query='["=","latest-report?",true]',
+                query='["and",["=","latest-report?",true],["not",["~","message",".+(end[[:space:]]of[[:space:]]file[[:space:]]reached|Connection[[:space:]]reset[[:space:]]by[[:space:]]peer)"]]]',
                 summarize_by='certname')
 
         for node in nodes:
